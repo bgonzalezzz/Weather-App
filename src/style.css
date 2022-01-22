@@ -52,5 +52,8 @@ p {
   margin-top: 16px;
 }
 
-#form {
+.footer {
+  text-align: center;
+  font-family: monospace;
+  color: #999999;
 }
