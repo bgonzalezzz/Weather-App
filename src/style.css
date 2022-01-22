@@ -1,0 +1,56 @@
+h1,
+h2,
+h3,
+p {
+  text-align: center;
+}
+
+p {
+  font-size: small;
+  padding: 5px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.app {
+  border: 1px solid #dadde1;
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.search {
+  margin: 16px 30px;
+}
+
+.container,
+.col,
+.weather_img {
+  text-align: center;
+}
+
+.currentCity {
+  font-size: 48px;
+}
+
+.currentOther {
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+.currentTemp {
+  font-size: 20px;
+}
+
+.weather_img {
+  font-size: 26px;
+}
+
+.col {
+  font-size: 18px;
+  margin-top: 16px;
+}
+
+#form {
+}
