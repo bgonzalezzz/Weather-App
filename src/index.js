@@ -33,6 +33,8 @@ function displayCity(city) {
   axios.get(apiUrl).then(getTemp);
 }
 
+displayCity("Sydney");
+
 let city = document.querySelector("#form");
 city.addEventListener("submit", getCity);
 
