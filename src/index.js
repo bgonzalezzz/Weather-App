@@ -35,7 +35,6 @@ city.addEventListener("submit", getCity);
 
 function getTemp(response) {
   let temperature = Math.round(response.data.main.temp);
-  console.log(response.data);
   let currentTemp = document.querySelector("#current-temp");
   currentTemp.innerHTML = temperature;
   document.querySelector("#city").innerHTML = response.data.name;
