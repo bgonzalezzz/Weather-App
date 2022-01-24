@@ -15,6 +15,9 @@ let days = [
 let day = days[now.getDay()];
 let hour = now.getHours();
 let minute = now.getMinutes();
+if (minute < 10) {
+  minute = `0${minute}`;
+}
 
 currentDateTime.innerHTML = `${day} ${hour}:${minute}`;
 
