@@ -16,20 +16,33 @@
   </head>
   <body>
     <div class="app">
-      <form id="form">
-        <div class="form-floating mb-3 search">
-          <input
-            type="search"
-            class="form-control"
-            id="place"
-            placeholder="Search City..."
-            autofocus="on"
-          />
-          <label for="search"><em>Search City...</em></label>
-
-          <input type="submit" value="Search" id="submit" />
-
-          <input type="button" value="Current" id="current" />
+      <form id="form" class="mb-3">
+        <div class="row">
+          <div class="col-8">
+            <input
+              type="search"
+              class="form-control"
+              id="place"
+              placeholder="Type a city..."
+              autofocus="on"
+            />
+          </div>
+          <div class="col-2">
+            <input
+              type="submit"
+              value="Search"
+              id="submit"
+              class="btn btn-primary w-100"
+            />
+          </div>
+          <div class="col-2">
+            <input
+              type="button"
+              value="Current"
+              id="current"
+              class="btn btn-primary w-100"
+            />
+          </div>
         </div>
       </form>
       <br />
