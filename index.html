@@ -45,29 +45,36 @@
           </div>
         </div>
       </form>
-      <br />
+
       <img src="" alt="Sunny" id="icon" />
-      <h1 class="currentCity">
+      <h2 class="currentCity">
         <span id="city"></span>
-      </h1>
+      </h2>
 
-      <h3 class="currentTemp">Currently <span id="current-temp"></span>°C</h3>
-
-      <h2><span id="low"></span>°C | <span id="high"></span>°C</h2>
+      <h3 class="currentTemp">
+        <span id="description"></span>
+        <br />
+        Currently
+        <span id="current-temp"></span>°C | °F
+      </h3>
 
       <h3 class="currentOther">
-        <span id="current-date-time"></span>
+        Min Temp: <span id="low"></span>°C
         <br />
-        <span id="description"></span>
+        Max Temp: <span id="high"></span>°C
         <br />
         Humidity: <span id="humidity"></span>%
         <br />
         Wind: <span id="wind"></span>km/h
         <br />
         Cloudiness: <span id="clouds"></span>%
+        <br />
+        <br />
+        <span id="last-updated"
+          ><em>Last updated: <span id="current-date-time"></span></em
+        ></span>
       </h3>
 
-      <br />
       <hr />
 
       <div class="container">

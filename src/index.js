@@ -51,7 +51,7 @@ function getTemp(response) {
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
   document.querySelector("#clouds").innerHTML = response.data.clouds.all;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
