@@ -34,7 +34,7 @@ function displayCity(city) {
 }
 
 function getTemp(response) {
-  let cTemp = response.data.main.temp;
+  cTemp = response.data.main.temp;
   document.querySelector("#current-temp").innerHTML = Math.round(cTemp);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#high").innerHTML = Math.round(
@@ -56,6 +56,8 @@ function getTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  cLink.classList.add("active");
+  fLink.classList.remove("active");
 }
 
 function showCurrentLocation(position) {
@@ -83,7 +85,7 @@ function displayCTemp(event) {
   event.preventDefault();
   cLink.classList.add("active");
   fLink.classList.remove("active");
-  document.querySelector("#current-temp").innerHTML = cTemp;
+  document.querySelector("#current-temp").innerHTML = Math.round(cTemp);
 }
 
 let cTemp = null;
