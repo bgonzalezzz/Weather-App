@@ -17,7 +17,7 @@ p {
   padding: 15px;
   margin: 20px auto;
   border-radius: 10px;
-  width: 80%;
+  max-width: 600px;
 }
 
 .search {
@@ -43,6 +43,17 @@ p {
   font-size: 20px;
 }
 
+.active {
+  color: black;
+  cursor: text;
+  text-decoration: none;
+}
+
+.active:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .weather_img {
   font-size: 26px;
 }
@@ -66,6 +77,12 @@ p {
 
 #description {
   text-transform: capitalize;
+}
+
+#current-units {
+  position: relative;
+  font-size: 14px;
+  top: -5px;
 }
 
 #last-updated {

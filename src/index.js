@@ -33,15 +33,9 @@ function displayCity(city) {
   axios.get(apiUrl).then(getTemp);
 }
 
-displayCity("Sydney");
-
-let city = document.querySelector("#form");
-city.addEventListener("submit", getCity);
-
 function getTemp(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let currentTemp = document.querySelector("#current-temp");
-  currentTemp.innerHTML = temperature;
+  let cTemp = response.data.main.temp;
+  document.querySelector("#current-temp").innerHTML = Math.round(cTemp);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#high").innerHTML = Math.round(
     response.data.main.temp_max
@@ -77,5 +71,33 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 }
 
+function displayFTemp(event) {
+  event.preventDefault();
+  let fTemp = (cTemp * 9) / 5 + 32;
+  cLink.classList.remove("active");
+  fLink.classList.add("active");
+  document.querySelector("#current-temp").innerHTML = Math.round(fTemp);
+}
+
+function displayCTemp(event) {
+  event.preventDefault();
+  cLink.classList.add("active");
+  fLink.classList.remove("active");
+  document.querySelector("#current-temp").innerHTML = cTemp;
+}
+
+let cTemp = null;
+
+let city = document.querySelector("#form");
+city.addEventListener("submit", getCity);
+
 let currentLocationButton = document.querySelector("#current");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+let fLink = document.querySelector("#f-link");
+fLink.addEventListener("click", displayFTemp);
+
+let cLink = document.querySelector("#c-link");
+cLink.addEventListener("click", displayCTemp);
+
+displayCity("Sydney");
