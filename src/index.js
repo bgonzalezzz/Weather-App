@@ -33,6 +33,32 @@ function displayCity(city) {
   axios.get(apiUrl).then(getTemp);
 }
 
+function displayForecast() {
+  let forecastHTML = `<div class="row align-items-start">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col">
+      <strong>${day}</strong>
+      <br />
+      <img
+      src="http://openweathermap.org/img/wn/02n@2x.png"
+      alt=""
+      width="50"
+      />
+      <br />
+      <p>18°C | 21°C</p>
+      </div>
+      `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  document.querySelector("#forecast").innerHTML = forecastHTML;
+}
+
 function getTemp(response) {
   cTemp = response.data.main.temp;
   document.querySelector("#current-temp").innerHTML = Math.round(cTemp);
@@ -50,12 +76,16 @@ function getTemp(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
+  displayForecast();
+
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
   cLink.classList.add("active");
   fLink.classList.remove("active");
 }
