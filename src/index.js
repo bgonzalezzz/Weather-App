@@ -33,26 +33,41 @@ function displayCity(city) {
   axios.get(apiUrl).then(getTemp);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastHTML = `<div class="row align-items-start">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-      <div class="col">
-      <strong>${day}</strong>
-      <br />
-      <img
-      src="http://openweathermap.org/img/wn/02n@2x.png"
-      alt=""
-      width="50"
-      />
-      <br />
-      <p>18°C | 21°C</p>
-      </div>
-      `;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col">
+        <strong>${formatDay(forecastDay.dt)}</strong>
+        <br />
+        <img
+        src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png"
+        alt=""
+        width="50"
+        />
+        <br />
+        <p><span class="forecast-temp-min">${Math.round(
+          forecastDay.temp.min
+        )}°C</span> | <span class="forecast-temp-max">${Math.round(
+          forecastDay.temp.max
+        )}°C</span></p>
+        </div>
+        `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
