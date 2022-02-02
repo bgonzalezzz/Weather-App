@@ -33,7 +33,8 @@ function displayCity(city) {
   axios.get(apiUrl).then(getTemp);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastHTML = `<div class="row align-items-start">`;
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   days.forEach(function (day) {
@@ -59,6 +60,12 @@ function displayForecast() {
   document.querySelector("#forecast").innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "2fa9ddec71ce08d23a59a79b1d873ee1";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function getTemp(response) {
   cTemp = response.data.main.temp;
   document.querySelector("#current-temp").innerHTML = Math.round(cTemp);
@@ -77,7 +84,7 @@ function getTemp(response) {
     response.data.wind.speed
   );
 
-  displayForecast();
+  getForecast(response.data.coord);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -133,3 +140,4 @@ let cLink = document.querySelector("#c-link");
 cLink.addEventListener("click", displayCTemp);
 
 displayCity("Sydney");
+displayForecast();
