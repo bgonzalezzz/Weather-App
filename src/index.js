@@ -62,9 +62,9 @@ function displayForecast(response) {
         <br />
         <p><span class="forecast-temp-min">${Math.round(
           forecastDay.temp.min
-        )}°C</span> | <span class="forecast-temp-max">${Math.round(
+        )}°</span> | <span class="forecast-temp-max">${Math.round(
           forecastDay.temp.max
-        )}°C</span></p>
+        )}°</span></p>
         </div>
         `;
     }
@@ -107,9 +107,6 @@ function getTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-
-  cLink.classList.add("active");
-  fLink.classList.remove("active");
 }
 
 function showCurrentLocation(position) {
@@ -125,34 +122,11 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 }
 
-function displayFTemp(event) {
-  event.preventDefault();
-  let fTemp = (cTemp * 9) / 5 + 32;
-  cLink.classList.remove("active");
-  fLink.classList.add("active");
-  document.querySelector("#current-temp").innerHTML = Math.round(fTemp);
-}
-
-function displayCTemp(event) {
-  event.preventDefault();
-  cLink.classList.add("active");
-  fLink.classList.remove("active");
-  document.querySelector("#current-temp").innerHTML = Math.round(cTemp);
-}
-
-let cTemp = null;
-
 let city = document.querySelector("#form");
 city.addEventListener("submit", getCity);
 
 let currentLocationButton = document.querySelector("#current");
 currentLocationButton.addEventListener("click", getCurrentLocation);
-
-let fLink = document.querySelector("#f-link");
-fLink.addEventListener("click", displayFTemp);
-
-let cLink = document.querySelector("#c-link");
-cLink.addEventListener("click", displayCTemp);
 
 displayCity("Sydney");
 displayForecast();
